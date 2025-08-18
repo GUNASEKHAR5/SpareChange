@@ -2176,8 +2176,6 @@ const SpareChangeHomepage = () => {
       </section>
 
       {/* Stats Section */}
-      {/* If you uncomment this section, ensure it has a unique ID like "stats" */}
-      {/*
       <section className="stats">
         <div className="container">
           <h2 className="section-title">Impact by Numbers</h2>
@@ -2201,7 +2199,7 @@ const SpareChangeHomepage = () => {
           </div>
         </div>
       </section>
-      */}
+     
 
       {/* Use Cases Section */}
       <section id="use-cases" className="use-cases">
