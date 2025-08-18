@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { DollarSign, Heart, TrendingUp, PiggyBank, Menu, X, ArrowRight, Shield, Users, BarChart3, Target, Zap, Globe } from 'lucide-react';
+import { Link } from "react-router-dom";
 
 const SpareChangeHomepage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -644,10 +645,10 @@ const SpareChangeHomepage = () => {
       {/* Header */}
       <header className="header">
         <nav className="nav-container">
-          <a href="#" className="logo">
-            <DollarSign size={24} />
-            SpareChange
-          </a>
+          <Link to="/" className="logo">
+            <DollarSign size={24}/>SpareChange
+          </Link>
+
           
           {/* <ul className="nav-links">
             <li><a onClick={() => scrollToSection('how-it-works')}>How It Works</a></li>
@@ -1071,7 +1072,7 @@ const SpareChangeHomepage = () => {
               <h4>SpareChange</h4>
               <p>Transforming spare change into meaningful impact through donations, investments, and smart savings.</p>
               <div style={{ marginTop: '1rem' }}>
-                <a href="#" className="logo" style={{ color: '#60a5fa', fontSize: '1.2rem' }}>
+                <a href="/" className="logo" style={{ color: '#60a5fa', fontSize: '1.2rem' }}>
                   <DollarSign size={20} />
                   SpareChange
                 </a>

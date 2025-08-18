@@ -475,10 +475,11 @@
 
 
 import React, { useState } from 'react';
-import { DollarSign, Eye, EyeOff, Mail, Lock, ArrowLeft, Info } from 'lucide-react'; // Added Info icon for security note
-import { Link, useNavigate } from 'react-router-dom'; // Import Link and useNavigate for routing
+import { DollarSign, Eye, EyeOff, Mail, Lock, ArrowLeft } from 'lucide-react';
+import { Link,useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -544,23 +545,7 @@ const LoginPage = () => {
 
   return (
     <div className="login-page">
-      {/* Inline styles for this component */}
       <style>{`
-        /* CSS Variables (consistent with your project's theme) */
-        :root {
-            --primary: #667eea; /* Blue */
-            --primary-dark: #5a67d8;
-            --secondary: #764ba2; /* Purple */
-            --accent: #f093fb; /* Pink */
-            --success: #48bb78; /* Green */
-            --warning: #ed8936; /* Orange */
-            --info: #4299e1; /* Light Blue */
-            --danger: #e53e3e; /* Red */
-            --dark: #1a202c; /* Dark text */
-            --light: #f7fafc; /* Light background */
-            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-
         * {
           margin: 0;
           padding: 0;
@@ -880,7 +865,7 @@ const LoginPage = () => {
       `}</style>
 
       <div className="login-container">
-        <button className="back-button" onClick={() => window.history.back()}>
+        <button className="back-button" onClick={() => navigate("/")}>
           <ArrowLeft size={16} />
           Back to Home
         </button>
@@ -984,8 +969,9 @@ const LoginPage = () => {
         </div>
 
         <div className="signup-link">
-          Don't have an account? <Link to="/signup">Create one here</Link>
-        </div>
+          Don&apos;t have an account? <Link to="/Signup">Create one here</Link>
+      </div>
+
       </div>
     </div>
   );
