@@ -488,7 +488,7 @@ const LoginPage = () => {
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
-  const navigate = useNavigate(); // Initialize useNavigate hook
+ // const navigate = useNavigate();  Initialize useNavigate hook
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
