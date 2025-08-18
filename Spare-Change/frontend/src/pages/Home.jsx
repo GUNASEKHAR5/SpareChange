@@ -958,29 +958,29 @@ const SpareChangeHomepage = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="stats">
+      {/* <section className="stats">
         <div className="container">
           <h2 className="section-title">Impact by Numbers</h2>
           <div className="stats-grid">
             <div className="stat-item">
-              <h3>₹15Cr+</h3>
+              <h3>0</h3>
               <p>Spare Change Collected</p>
             </div>
             <div className="stat-item">
-              <h3>2.5L+</h3>
+              <h3>0</h3>
               <p>Active Users</p>
             </div>
             <div className="stat-item">
-              <h3>150+</h3>
+              <h3>0</h3>
               <p>Verified NGO Partners</p>
             </div>
             <div className="stat-item">
-              <h3>₹890</h3>
+              <h3>0</h3>
               <p>Average Monthly Savings</p>
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Use Cases Section */}
       <section id="use-cases" className="use-cases">
