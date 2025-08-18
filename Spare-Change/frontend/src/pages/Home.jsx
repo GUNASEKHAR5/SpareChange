@@ -1,68 +1,5 @@
-// import React from "react";
-// import { Link } from "react-router-dom";
-
-// export default function Home() {
-//   return (
-//     <div className="min-h-screen bg-gray-50 flex flex-col">
-//       {/* Navbar */}
-//       <header className="w-full shadow-md bg-white fixed top-0 z-50">
-//         <nav className="container mx-auto flex justify-between items-center py-4 px-6">
-//           <h1 className="text-2xl font-bold text-blue-600">SpareChange</h1>
-//           <ul className="flex gap-6">
-//             <li><Link to="/" className="text-gray-700 hover:text-blue-600 font-medium">Home</Link></li>
-//             <li><Link to="/wallet" className="text-gray-700 hover:text-blue-600 font-medium">Wallet</Link></li>
-//             <li><Link to="/donate" className="text-gray-700 hover:text-blue-600 font-medium">Donate</Link></li>
-//             <li><Link to="/invest" className="text-gray-700 hover:text-blue-600 font-medium">Invest</Link></li>
-//           </ul>
-//         </nav>
-//       </header>
-
-//       {/* Hero */}
-//       <section className="flex-1 flex flex-col justify-center items-center text-center px-6 pt-24">
-//         <h2 className="text-4xl md:text-5xl font-extrabold text-gray-800 mb-4">
-//           Turn Your Spare Change Into <span className="text-blue-600">Impact</span>
-//         </h2>
-//         <p className="text-lg text-gray-600 max-w-2xl mb-6">
-//           SpareChange helps you round up your daily transactions and use the extra money
-//           for donations, social causes, or micro-investments. Small steps. Big impact.
-//         </p>
-//         <div className="flex gap-4">
-//           <Link to="/get-started" className="bg-blue-600 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-700 transition">
-//             Get Started
-//           </Link>
-//           <Link to="/learn-more" className="border border-blue-600 text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-50 transition">
-//             Learn More
-//           </Link>
-//         </div>
-//       </section>
-
-//       {/* Features */}
-//       <section className="bg-white py-16">
-//         <div className="container mx-auto grid md:grid-cols-3 gap-8 px-6">
-//           <div className="p-6 shadow-md rounded-2xl bg-gray-50 hover:shadow-lg transition">
-//             <h3 className="text-xl font-semibold mb-3 text-blue-600">Round-Up Wallet</h3>
-//             <p className="text-gray-600">Purchases are rounded up; the difference goes into your pooled wallet.</p>
-//           </div>
-//           <div className="p-6 shadow-md rounded-2xl bg-gray-50 hover:shadow-lg transition">
-//             <h3 className="text-xl font-semibold mb-3 text-blue-600">Donate</h3>
-//             <p className="text-gray-600">Support causes from your wallet in one click.</p>
-//           </div>
-//           <div className="p-6 shadow-md rounded-2xl bg-gray-50 hover:shadow-lg transition">
-//             <h3 className="text-xl font-semibold mb-3 text-blue-600">Invest</h3>
-//             <p className="text-gray-600">Grow savings via curated micro-investments.</p>
-//           </div>
-//         </div>
-//       </section>
-
-//       {/* Footer */}
-//       <footer className="bg-gray-800 text-white py-6 text-center">
-//         <p>&copy; {new Date().getFullYear()} SpareChange. All rights reserved.</p>
-//       </footer>
-//     </div>
-//   );
-// }
-
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { DollarSign, Heart, TrendingUp, PiggyBank, Menu, X, ArrowRight, Shield, Users, BarChart3, Target, Zap, Globe } from 'lucide-react';
 
 const SpareChangeHomepage = () => {
@@ -712,13 +649,21 @@ const SpareChangeHomepage = () => {
             SpareChange
           </a>
           
-          <ul className="nav-links">
+          {/* <ul className="nav-links">
             <li><a onClick={() => scrollToSection('how-it-works')}>How It Works</a></li>
             <li><a onClick={() => scrollToSection('features')}>Features</a></li>
             <li><a onClick={() => scrollToSection('use-cases')}>Use Cases</a></li>
             <li><a href="/Login">Login</a></li>
             <li><a href="/signup" className="cta-button">Sign Up</a></li>
-          </ul>
+          </ul> */}
+          <ul className="nav-links">
+            <li><a onClick={() => scrollToSection('how-it-works')}>How It Works</a></li>
+            <li><a onClick={() => scrollToSection('features')}>Features</a></li>
+            <li><a onClick={() => scrollToSection('use-cases')}>Use Cases</a></li>
+            <li><Link to="/invest" style={{ textDecoration: 'none', color: '#64748b', fontWeight: '500' }}>Invest</Link></li>
+            <li><Link to="/login" style={{ textDecoration: 'none', color: '#64748b', fontWeight: '500' }}>Login</Link></li>
+            <li><Link to="/signup" className="cta-button">Sign Up</Link></li>
+            </ul>
 
           <button 
             className="mobile-menu-btn"
@@ -727,7 +672,7 @@ const SpareChangeHomepage = () => {
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
 
-          <div className={`mobile-menu ${isMenuOpen ? 'open' : ''}`}>
+          {/* <div className={`mobile-menu ${isMenuOpen ? 'open' : ''}`}>
             <ul className="mobile-nav-links">
               <li><a onClick={() => scrollToSection('how-it-works')}>How It Works</a></li>
               <li><a onClick={() => scrollToSection('features')}>Features</a></li>
@@ -735,7 +680,18 @@ const SpareChangeHomepage = () => {
               <li><a href="/login">Login</a></li>
               <li><a href="/signup" className="cta-button">Sign Up</a></li>
             </ul>
-          </div>
+          </div> */}
+
+          <div className={`mobile-menu ${isMenuOpen ? 'open' : ''}`}>
+            <ul className="mobile-nav-links">
+                <li><a onClick={() => scrollToSection('how-it-works')}>How It Works</a></li>
+                <li><a onClick={() => scrollToSection('features')}>Features</a></li>
+                <li><a onClick={() => scrollToSection('use-cases')}>Use Cases</a></li>
+                <li><Link to="/invest" style={{ textDecoration: 'none', color: '#64748b', fontWeight: '500' }}>Invest</Link></li>
+                <li><Link to="/login" style={{ textDecoration: 'none', color: '#64748b', fontWeight: '500' }}>Login</Link></li>
+                <li><Link to="/signup" className="cta-button">Sign Up</Link></li>
+            </ul>
+            </div>
         </nav>
       </header>
 
@@ -762,12 +718,20 @@ const SpareChangeHomepage = () => {
             </div>
           </div>
 
-          <div className="hero-buttons">
+          {/* <div className="hero-buttons">
             <a href="/signup" className="btn-primary">Start Saving Today</a>
             <a onClick={() => scrollToSection('how-it-works')} className="btn-secondary">
               Learn More
             </a>
-          </div>
+          </div> */}
+
+
+          <div className="hero-buttons">
+            <Link to="/signup" className="btn-primary">Start Saving Today</Link>
+            <a onClick={() => scrollToSection('how-it-works')} className="btn-secondary">
+                Learn More
+            </a>
+        </div>
         </div>
       </section>
 
@@ -798,7 +762,7 @@ const SpareChangeHomepage = () => {
               </ul>
             </div>
 
-            <div className="pillar-card invest">
+            {/* <div className="pillar-card invest">
               <div className="pillar-icon">
                 <TrendingUp size={32} />
               </div>
@@ -813,7 +777,42 @@ const SpareChangeHomepage = () => {
                 <li>Risk assessment and management</li>
                 <li>Real-time returns tracking</li>
               </ul>
-            </div>
+            </div> */}
+
+                    <div className="pillar-card invest">
+        <div className="pillar-icon">
+            <TrendingUp size={32} />
+        </div>
+        <h3>Micro-Investment</h3>
+        <p>
+            Invest your spare change in diversified portfolios, mutual funds, 
+            and ETFs. Build wealth gradually with minimal risk.
+        </p>
+        <ul className="pillar-features">
+            <li>Low-risk mutual funds and ETFs</li>
+            <li>Robo-advisor portfolio suggestions</li>
+            <li>Risk assessment and management</li>
+            <li>Real-time returns tracking</li>
+        </ul>
+        {/* ADD THIS BUTTON */}
+        <div style={{ marginTop: '1.5rem' }}>
+            <Link 
+            to="/invest" 
+            className="btn-primary" 
+            style={{ 
+                background: '#10b981', 
+                color: 'white', 
+                padding: '0.75rem 1.5rem', 
+                borderRadius: '8px', 
+                textDecoration: 'none', 
+                display: 'inline-block',
+                fontWeight: '600'
+            }}
+            >
+            Try Investment Dashboard →
+            </Link>
+        </div>
+        </div>
 
             <div className="pillar-card save">
               <div className="pillar-icon">
@@ -957,7 +956,7 @@ const SpareChangeHomepage = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="stats">
+      {/* <section className="stats">
         <div className="container">
           <h2 className="section-title">Impact by Numbers</h2>
           <div className="stats-grid">
@@ -979,7 +978,7 @@ const SpareChangeHomepage = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Use Cases Section */}
       <section id="use-cases" className="use-cases">
@@ -1057,7 +1056,9 @@ const SpareChangeHomepage = () => {
               </div>
             </div>
 
-            <a href="/signup" className="btn-primary">Create Free Account</a>
+            {/* <a href="/signup" className="btn-primary">Create Free Account</a> */}
+
+            <Link to="/signup" className="btn-primary">Create Free Account</Link>
           </div>
         </div>
       </section>
@@ -1121,3 +1122,67 @@ const SpareChangeHomepage = () => {
 };
 
 export default SpareChangeHomepage;
+
+// import React from "react";
+// import { Link } from "react-router-dom";
+
+// export default function Home() {
+//   return (
+//     <div className="min-h-screen bg-gray-50 flex flex-col">
+//       {/* Navbar */}
+//       <header className="w-full shadow-md bg-white fixed top-0 z-50">
+//         <nav className="container mx-auto flex justify-between items-center py-4 px-6">
+//           <h1 className="text-2xl font-bold text-blue-600">SpareChange</h1>
+//           <ul className="flex gap-6">
+//             <li><Link to="/" className="text-gray-700 hover:text-blue-600 font-medium">Home</Link></li>
+//             <li><Link to="/wallet" className="text-gray-700 hover:text-blue-600 font-medium">Wallet</Link></li>
+//             <li><Link to="/donate" className="text-gray-700 hover:text-blue-600 font-medium">Donate</Link></li>
+//             <li><Link to="/invest" className="text-gray-700 hover:text-blue-600 font-medium">Invest</Link></li>
+//           </ul>
+//         </nav>
+//       </header>
+
+//       {/* Hero */}
+//       <section className="flex-1 flex flex-col justify-center items-center text-center px-6 pt-24">
+//         <h2 className="text-4xl md:text-5xl font-extrabold text-gray-800 mb-4">
+//           Turn Your Spare Change Into <span className="text-blue-600">Impact</span>
+//         </h2>
+//         <p className="text-lg text-gray-600 max-w-2xl mb-6">
+//           SpareChange helps you round up your daily transactions and use the extra money
+//           for donations, social causes, or micro-investments. Small steps. Big impact.
+//         </p>
+//         <div className="flex gap-4">
+//           <Link to="/get-started" className="bg-blue-600 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-700 transition">
+//             Get Started
+//           </Link>
+//           <Link to="/learn-more" className="border border-blue-600 text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-50 transition">
+//             Learn More
+//           </Link>
+//         </div>
+//       </section>
+
+//       {/* Features */}
+//       <section className="bg-white py-16">
+//         <div className="container mx-auto grid md:grid-cols-3 gap-8 px-6">
+//           <div className="p-6 shadow-md rounded-2xl bg-gray-50 hover:shadow-lg transition">
+//             <h3 className="text-xl font-semibold mb-3 text-blue-600">Round-Up Wallet</h3>
+//             <p className="text-gray-600">Purchases are rounded up; the difference goes into your pooled wallet.</p>
+//           </div>
+//           <div className="p-6 shadow-md rounded-2xl bg-gray-50 hover:shadow-lg transition">
+//             <h3 className="text-xl font-semibold mb-3 text-blue-600">Donate</h3>
+//             <p className="text-gray-600">Support causes from your wallet in one click.</p>
+//           </div>
+//           <div className="p-6 shadow-md rounded-2xl bg-gray-50 hover:shadow-lg transition">
+//             <h3 className="text-xl font-semibold mb-3 text-blue-600">Invest</h3>
+//             <p className="text-gray-600">Grow savings via curated micro-investments.</p>
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* Footer */}
+//       <footer className="bg-gray-800 text-white py-6 text-center">
+//         <p>&copy; {new Date().getFullYear()} SpareChange. All rights reserved.</p>
+//       </footer>
+//     </div>
+//   );
+// }
