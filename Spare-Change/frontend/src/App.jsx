@@ -61,6 +61,7 @@ import React from "react";
 import {Route ,Routes,BrowserRouter as Router} from "react-router-dom";
 import Home from "./pages/Home";
 import LoginPage from "./pages/Login";
+import SignupPage from "./pages/Signup";
 
 // placeholders so links don’t 404
 const Wallet = () => <div style={{padding:20}}>Wallet page</div>;
@@ -74,6 +75,7 @@ export default function App() {
     <Router>
       <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/Signup" element={<SignupPage />} />
       <Route path="/Login" element={<LoginPage />} />
       <Route path="/wallet" element={<Wallet />} />
       <Route path="/donate" element={<Donate />} />

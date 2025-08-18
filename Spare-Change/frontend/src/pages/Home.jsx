@@ -64,6 +64,7 @@
 
 import React, { useState } from 'react';
 import { DollarSign, Heart, TrendingUp, PiggyBank, Menu, X, ArrowRight, Shield, Users, BarChart3, Target, Zap, Globe } from 'lucide-react';
+import { Link } from "react-router-dom";
 
 const SpareChangeHomepage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -707,17 +708,17 @@ const SpareChangeHomepage = () => {
       {/* Header */}
       <header className="header">
         <nav className="nav-container">
-          <a href="#" className="logo">
-            <DollarSign size={24} />
-            SpareChange
-          </a>
+          <Link to="/" className="logo">
+            <DollarSign size={24}/>SpareChange
+          </Link>
+
           
           <ul className="nav-links">
             <li><a onClick={() => scrollToSection('how-it-works')}>How It Works</a></li>
             <li><a onClick={() => scrollToSection('features')}>Features</a></li>
             <li><a onClick={() => scrollToSection('use-cases')}>Use Cases</a></li>
             <li><a href="/Login">Login</a></li>
-            <li><a href="/signup" className="cta-button">Sign Up</a></li>
+            <li><a href="/signup">Sign Up</a></li>
           </ul>
 
           <button 
@@ -733,7 +734,7 @@ const SpareChangeHomepage = () => {
               <li><a onClick={() => scrollToSection('features')}>Features</a></li>
               <li><a onClick={() => scrollToSection('use-cases')}>Use Cases</a></li>
               <li><a href="/login">Login</a></li>
-              <li><a href="/signup" className="cta-button">Sign Up</a></li>
+              <li><a href="/signup">Sign Up</a></li>
             </ul>
           </div>
         </nav>
@@ -1070,7 +1071,7 @@ const SpareChangeHomepage = () => {
               <h4>SpareChange</h4>
               <p>Transforming spare change into meaningful impact through donations, investments, and smart savings.</p>
               <div style={{ marginTop: '1rem' }}>
-                <a href="#" className="logo" style={{ color: '#60a5fa', fontSize: '1.2rem' }}>
+                <a href="/" className="logo" style={{ color: '#60a5fa', fontSize: '1.2rem' }}>
                   <DollarSign size={20} />
                   SpareChange
                 </a>
