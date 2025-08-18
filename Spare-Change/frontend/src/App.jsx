@@ -62,11 +62,12 @@ import {Route ,Routes,BrowserRouter as Router} from "react-router-dom";
 import Home from "./pages/Home";
 import LoginPage from "./pages/Login";
 import SignupPage from "./pages/Signup";
+import Investment from "./pages/Invest";
 
 // placeholders so links don’t 404
 const Wallet = () => <div style={{padding:20}}>Wallet page</div>;
 const Donate = () => <div style={{padding:20}}>Donate page</div>;
-const Invest = () => <div style={{padding:20}}>Invest page</div>;
+// const Invest = () => <div style={{padding:20}}>Invest page</div>;
 const GetStarted = () => <div style={{padding:20}}>Get Started</div>;
 const LearnMore = () => <div style={{padding:20}}>Learn More</div>;
 
@@ -79,7 +80,7 @@ export default function App() {
       <Route path="/Login" element={<LoginPage />} />
       <Route path="/wallet" element={<Wallet />} />
       <Route path="/donate" element={<Donate />} />
-      <Route path="/invest" element={<Invest />} />
+      <Route path="/Invest" element={<Investment/>} />
       <Route path="/get-started" element={<GetStarted />} />
       <Route path="/learn-more" element={<LearnMore />} />
       </Routes>

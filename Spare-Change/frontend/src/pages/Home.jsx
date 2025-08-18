@@ -799,7 +799,7 @@ const SpareChangeHomepage = () => {
               </ul>
             </div>
 
-            <div className="pillar-card invest">
+            {/* <div className="pillar-card invest">
               <div className="pillar-icon">
                 <TrendingUp size={32} />
               </div>
@@ -814,6 +814,40 @@ const SpareChangeHomepage = () => {
                 <li>Risk assessment and management</li>
                 <li>Real-time returns tracking</li>
               </ul>
+            </div> */}
+
+            <div className="pillar-card invest">
+                <div className="pillar-icon">
+                    <TrendingUp size={32} />
+                </div>
+                <h3>Micro-Investment</h3>
+                <p>
+                    Invest your spare change in diversified portfolios, mutual funds, 
+                    and ETFs. Build wealth gradually with minimal risk.
+                </p>
+                <ul className="pillar-features">
+                    <li>Low-risk mutual funds and ETFs</li>
+                    <li>Robo-advisor portfolio suggestions</li>
+                    <li>Risk assessment and management</li>
+                    <li>Real-time returns tracking</li>
+                </ul>
+                <div style={{ marginTop: '1.5rem' }}>
+                    <Link 
+                    to="/invest" 
+                    className="btn-primary" 
+                    style={{ 
+                        background: '#10b981', 
+                        color: 'white', 
+                        padding: '0.75rem 1.5rem', 
+                        borderRadius: '8px', 
+                        textDecoration: 'none', 
+                        display: 'inline-block',
+                        fontWeight: '600'
+                    }}
+                    >
+                    Try Investment Dashboard →
+                    </Link>
+                </div>
             </div>
 
             <div className="pillar-card save">
