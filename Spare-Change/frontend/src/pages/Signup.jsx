@@ -70,8 +70,8 @@ const SignupPage = () => {
     // Simulate API call
     setTimeout(() => {
       setIsLoading(false);
-      console.log('Signup successful:', formData);
-      alert('Signup successful! Redirecting to login...');
+      navigate('/');
+      alert('Signup successful! Redirecting to HomePage...');
     }, 2000);
   };
 
@@ -385,8 +385,7 @@ const SignupPage = () => {
 
         <div className="login-header">
           <div className="logo">
-            <DollarSign size={28} />
-            SpareChange
+            <DollarSign size={28}/>SpareChange
           </div>
           <h1 className="login-title">Create Account</h1>
           <p className="login-subtitle">

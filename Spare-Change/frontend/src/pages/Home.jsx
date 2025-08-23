@@ -1999,7 +1999,6 @@ const SpareChangeHomepage = () => {
                 <li>Real-time impact reports</li>
               </ul>
             </div>
-
             <div className="pillar-card invest">
                 <div className="pillar-icon">
                     <TrendingUp size={32} />

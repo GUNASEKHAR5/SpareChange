@@ -95,6 +95,7 @@ import Home from "./pages/Home";
 import LoginPage from "./pages/Login";
 import Investment from "./pages/Invest";
 import SignupPage from "./pages/Signup";
+import Investment from "./pages/Invest";
 
 // placeholders so links don’t 404
 const Wallet = () => <div style={{padding:20}}>Wallet page</div>;

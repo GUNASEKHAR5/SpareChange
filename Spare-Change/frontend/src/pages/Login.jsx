@@ -535,12 +535,14 @@ const LoginPage = () => {
     // Simulate API call for login
     setTimeout(() => {
       setIsLoading(false);
-      // In a real application, you'd verify credentials here.
-      // For this demo, we'll assume login is successful.
-      console.log('Login attempt with:', formData);
-      // alert('Login successful! Redirecting to dashboard...'); // Removed alert as per request
-      navigate('/invest'); // Redirect to the /invest page
-    }, 2000); // Simulate network delay
+
+      // Handle successful login - redirect to dashboard
+      console.log('Login successful:', formData);
+      navigate('/Invest');
+      alert('Login successful! Redirecting to dashboard...');
+    }, 2000);
+
+
   };
 
   return (

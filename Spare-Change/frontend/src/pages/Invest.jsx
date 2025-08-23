@@ -1,463 +1,3 @@
-// import React, { useState, useEffect } from 'react';
-// import { TrendingUp, TrendingDown, DollarSign, PieChart, BarChart3, Target, AlertCircle, CheckCircle, Clock, ArrowRight, Plus, Minus, RefreshCw, Eye, EyeOff, Info } from 'lucide-react';
-
-// import '../styles/Investment.css';
-// const Investment = () => {
-//   // Mock user data - in real app, this would come from API/context
-//   const [user] = useState({
-//     name: "Priya Sharma",
-//     totalSpareChange: 8450,
-//     investmentAllocation: 40, // 40% of spare change goes to investment
-//     riskProfile: "moderate" // conservative, moderate, aggressive
-//   });
-
-//   const [portfolio, setPortfolio] = useState({
-//     totalValue: 25680,
-//     totalInvested: 22400,
-//     totalReturns: 3280,
-//     returnPercentage: 14.64,
-//     lastUpdated: new Date()
-//   });
-
-//   const [investments] = useState([
-//     {
-//       id: 1,
-//       name: "Nifty 50 Index Fund",
-//       type: "Index Fund",
-//       currentValue: 12340,
-//       invested: 10500,
-//       returns: 1840,
-//       returnPercent: 17.52,
-//       allocation: 48,
-//       risk: "Low",
-//       category: "Equity"
-//     },
-//     {
-//       id: 2,
-//       name: "Diversified Equity Fund",
-//       type: "Mutual Fund",
-//       currentValue: 8960,
-//       invested: 8200,
-//       returns: 760,
-//       returnPercent: 9.27,
-//       allocation: 35,
-//       risk: "Medium",
-//       category: "Equity"
-//     },
-//     {
-//       id: 3,
-//       name: "Corporate Bond Fund",
-//       type: "Debt Fund",
-//       currentValue: 4380,
-//       invested: 3700,
-//       returns: 680,
-//       returnPercent: 18.38,
-//       allocation: 17,
-//       risk: "Low",
-//       category: "Debt"
-//     }
-//   ]);
-
-//   const [recommendedFunds] = useState([
-//     {
-//       id: 4,
-//       name: "Technology Sector ETF",
-//       type: "Sector ETF",
-//       minInvestment: 100,
-//       expectedReturn: "12-15%",
-//       risk: "Medium",
-//       category: "Equity",
-//       reason: "Based on your transaction patterns at tech stores"
-//     },
-//     {
-//       id: 5,
-//       name: "Gold ETF",
-//       type: "Commodity ETF", 
-//       minInvestment: 500,
-//       expectedReturn: "8-12%",
-//       risk: "Low",
-//       category: "Commodity",
-//       reason: "Good for portfolio diversification"
-//     }
-//   ]);
-
-//   const [transactions] = useState([
-//     {
-//       id: 1,
-//       date: "2025-01-15",
-//       type: "Investment",
-//       fund: "Nifty 50 Index Fund",
-//       amount: 890,
-//       source: "Spare Change Pool"
-//     },
-//     {
-//       id: 2,
-//       date: "2025-01-10",
-//       type: "Investment",
-//       fund: "Corporate Bond Fund",
-//       amount: 450,
-//       source: "Spare Change Pool"
-//     },
-//     {
-//       id: 3,
-//       date: "2025-01-05",
-//       type: "Dividend",
-//       fund: "Diversified Equity Fund",
-//       amount: 120,
-//       source: "Dividend Credit"
-//     }
-//   ]);
-
-//   const [activeTab, setActiveTab] = useState('overview');
-//   const [showBalance, setShowBalance] = useState(true);
-//   const [refreshing, setRefreshing] = useState(false);
-
-//   const handleRefresh = async () => {
-//     setRefreshing(true);
-//     // Simulate API call
-//     setTimeout(() => {
-//       setPortfolio(prev => ({
-//         ...prev,
-//         lastUpdated: new Date()
-//       }));
-//       setRefreshing(false);
-//     }, 1000);
-//   };
-
-//   const formatCurrency = (amount) => {
-//     return new Intl.NumberFormat('en-IN', {
-//       style: 'currency',
-//       currency: 'INR',
-//       minimumFractionDigits: 0,
-//       maximumFractionDigits: 0
-//     }).format(amount);
-//   };
-
-//   const formatDate = (date) => {
-//     return new Date(date).toLocaleDateString('en-IN', {
-//       year: 'numeric',
-//       month: 'short',
-//       day: 'numeric'
-//     });
-//   };
-
-//   const getRiskColor = (risk) => {
-//     switch(risk?.toLowerCase()) {
-//       case 'low': return 'text-green-600 bg-green-100';
-//       case 'medium': return 'text-yellow-600 bg-yellow-100';
-//       case 'high': return 'text-red-600 bg-red-100';
-//       default: return 'text-gray-600 bg-gray-100';
-//     }
-//   };
-
-//   const OverviewTab = () => (
-//     <div className="space-y-6">
-//       {/* Portfolio Summary */}
-//       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-//         <div className="bg-white p-6 rounded-xl border border-gray-200">
-//           <div className="flex items-center justify-between mb-2">
-//             <h3 className="text-sm font-medium text-gray-600">Total Portfolio Value</h3>
-//             <button onClick={() => setShowBalance(!showBalance)}>
-//               {showBalance ? <Eye size={16} /> : <EyeOff size={16} />}
-//             </button>
-//           </div>
-//           <p className="text-2xl font-bold text-gray-900">
-//             {showBalance ? formatCurrency(portfolio.totalValue) : '••••••'}
-//           </p>
-//         </div>
-
-//         <div className="bg-white p-6 rounded-xl border border-gray-200">
-//           <h3 className="text-sm font-medium text-gray-600 mb-2">Total Invested</h3>
-//           <p className="text-2xl font-bold text-gray-900">
-//             {showBalance ? formatCurrency(portfolio.totalInvested) : '••••••'}
-//           </p>
-//         </div>
-
-//         <div className="bg-white p-6 rounded-xl border border-gray-200">
-//           <h3 className="text-sm font-medium text-gray-600 mb-2">Total Returns</h3>
-//           <p className="text-2xl font-bold text-green-600 flex items-center">
-//             {showBalance ? formatCurrency(portfolio.totalReturns) : '••••••'}
-//             <TrendingUp size={20} className="ml-2" />
-//           </p>
-//         </div>
-
-//         <div className="bg-white p-6 rounded-xl border border-gray-200">
-//           <h3 className="text-sm font-medium text-gray-600 mb-2">Return %</h3>
-//           <p className="text-2xl font-bold text-green-600">
-//             {showBalance ? `+${portfolio.returnPercentage}%` : '••••'}
-//           </p>
-//         </div>
-//       </div>
-
-//       {/* Spare Change Investment Allocation */}
-//       <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-xl border border-blue-200">
-//         <div className="flex items-center justify-between mb-4">
-//           <h3 className="text-lg font-semibold text-gray-900">Spare Change Investment</h3>
-//           <div className="flex items-center gap-2 text-sm text-gray-600">
-//             <RefreshCw size={16} className={refreshing ? 'animate-spin' : ''} />
-//             <span>Last updated: {portfolio.lastUpdated.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' })}</span>
-//           </div>
-//         </div>
-//         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-//           <div className="text-center">
-//             <p className="text-sm text-gray-600 mb-1">Available Spare Change</p>
-//             <p className="text-xl font-bold text-blue-600">{formatCurrency(user.totalSpareChange)}</p>
-//           </div>
-//           <div className="text-center">
-//             <p className="text-sm text-gray-600 mb-1">Investment Allocation</p>
-//             <p className="text-xl font-bold text-indigo-600">{user.investmentAllocation}%</p>
-//           </div>
-//           <div className="text-center">
-//             <p className="text-sm text-gray-600 mb-1">Auto-Investment Amount</p>
-//             <p className="text-xl font-bold text-green-600">{formatCurrency(user.totalSpareChange * user.investmentAllocation / 100)}</p>
-//           </div>
-//         </div>
-//       </div>
-
-//       {/* Current Holdings */}
-//       <div className="bg-white rounded-xl border border-gray-200">
-//         <div className="p-6 border-b border-gray-200">
-//           <h3 className="text-lg font-semibold text-gray-900">Your Holdings</h3>
-//         </div>
-//         <div className="p-6">
-//           <div className="space-y-4">
-//             {investments.map((investment) => (
-//               <div key={investment.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
-//                 <div className="flex-1">
-//                   <div className="flex items-center gap-3 mb-2">
-//                     <h4 className="font-medium text-gray-900">{investment.name}</h4>
-//                     <span className={`px-2 py-1 rounded-full text-xs font-medium ${getRiskColor(investment.risk)}`}>
-//                       {investment.risk} Risk
-//                     </span>
-//                   </div>
-//                   <p className="text-sm text-gray-600">{investment.type} • {investment.allocation}% of portfolio</p>
-//                 </div>
-//                 <div className="text-right">
-//                   <p className="font-semibold text-gray-900">{formatCurrency(investment.currentValue)}</p>
-//                   <p className={`text-sm flex items-center justify-end ${investment.returns >= 0 ? 'text-green-600' : 'text-red-600'}`}>
-//                     {investment.returns >= 0 ? <TrendingUp size={14} /> : <TrendingDown size={14} />}
-//                     <span className="ml-1">+{investment.returnPercent}%</span>
-//                   </p>
-//                 </div>
-//               </div>
-//             ))}
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-
-//   const RecommendationsTab = () => (
-//     <div className="space-y-6">
-//       {/* Risk Profile */}
-//       <div className="bg-white p-6 rounded-xl border border-gray-200">
-//         <h3 className="text-lg font-semibold text-gray-900 mb-4">Your Investment Profile</h3>
-//         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-//           <div className="text-center p-4 bg-blue-50 rounded-lg">
-//             <Target size={32} className="mx-auto mb-2 text-blue-600" />
-//             <h4 className="font-medium text-gray-900">Risk Tolerance</h4>
-//             <p className="text-sm text-gray-600 capitalize">{user.riskProfile}</p>
-//           </div>
-//           <div className="text-center p-4 bg-green-50 rounded-lg">
-//             <BarChart3 size={32} className="mx-auto mb-2 text-green-600" />
-//             <h4 className="font-medium text-gray-900">Investment Style</h4>
-//             <p className="text-sm text-gray-600">Growth Focused</p>
-//           </div>
-//           <div className="text-center p-4 bg-purple-50 rounded-lg">
-//             <Clock size={32} className="mx-auto mb-2 text-purple-600" />
-//             <h4 className="font-medium text-gray-900">Time Horizon</h4>
-//             <p className="text-sm text-gray-600">Long Term (5+ years)</p>
-//           </div>
-//         </div>
-//       </div>
-
-//       {/* AI Recommendations */}
-//       <div className="bg-white rounded-xl border border-gray-200">
-//         <div className="p-6 border-b border-gray-200">
-//           <div className="flex items-center gap-2">
-//             <h3 className="text-lg font-semibold text-gray-900">AI-Powered Recommendations</h3>
-//             <div className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Smart</div>
-//           </div>
-//           <p className="text-sm text-gray-600 mt-1">Based on your spending patterns and investment goals</p>
-//         </div>
-//         <div className="p-6">
-//           <div className="space-y-4">
-//             {recommendedFunds.map((fund) => (
-//               <div key={fund.id} className="p-4 border border-gray-200 rounded-lg hover:border-blue-300 transition-colors">
-//                 <div className="flex items-start justify-between mb-3">
-//                   <div>
-//                     <h4 className="font-medium text-gray-900">{fund.name}</h4>
-//                     <p className="text-sm text-gray-600">{fund.type}</p>
-//                   </div>
-//                   <span className={`px-2 py-1 rounded-full text-xs font-medium ${getRiskColor(fund.risk)}`}>
-//                     {fund.risk} Risk
-//                   </span>
-//                 </div>
-//                 <div className="grid grid-cols-2 gap-4 mb-3">
-//                   <div>
-//                     <p className="text-xs text-gray-500">Min Investment</p>
-//                     <p className="font-medium">{formatCurrency(fund.minInvestment)}</p>
-//                   </div>
-//                   <div>
-//                     <p className="text-xs text-gray-500">Expected Return</p>
-//                     <p className="font-medium text-green-600">{fund.expectedReturn}</p>
-//                   </div>
-//                 </div>
-//                 <div className="flex items-center gap-2 mb-3">
-//                   <Info size={14} className="text-blue-500" />
-//                   <p className="text-sm text-blue-600">{fund.reason}</p>
-//                 </div>
-//                 <button className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center gap-2">
-//                   <Plus size={16} />
-//                   Add to Portfolio
-//                 </button>
-//               </div>
-//             ))}
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-
-//   const TransactionsTab = () => (
-//     <div className="space-y-6">
-//       <div className="bg-white rounded-xl border border-gray-200">
-//         <div className="p-6 border-b border-gray-200">
-//           <h3 className="text-lg font-semibold text-gray-900">Investment Transactions</h3>
-//           <p className="text-sm text-gray-600">All your investment activity from spare change</p>
-//         </div>
-//         <div className="p-6">
-//           <div className="space-y-4">
-//             {transactions.map((transaction) => (
-//               <div key={transaction.id} className="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
-//                 <div className="flex items-center gap-3">
-//                   <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
-//                     transaction.type === 'Investment' ? 'bg-blue-100' : 
-//                     transaction.type === 'Dividend' ? 'bg-green-100' : 'bg-gray-100'
-//                   }`}>
-//                     {transaction.type === 'Investment' ? <TrendingUp size={20} className="text-blue-600" /> :
-//                      transaction.type === 'Dividend' ? <DollarSign size={20} className="text-green-600" /> :
-//                      <ArrowRight size={20} className="text-gray-600" />}
-//                   </div>
-//                   <div>
-//                     <h4 className="font-medium text-gray-900">{transaction.fund}</h4>
-//                     <p className="text-sm text-gray-600">{transaction.source} • {formatDate(transaction.date)}</p>
-//                   </div>
-//                 </div>
-//                 <div className="text-right">
-//                   <p className={`font-semibold ${
-//                     transaction.type === 'Dividend' ? 'text-green-600' : 'text-gray-900'
-//                   }`}>
-//                     {transaction.type === 'Dividend' ? '+' : ''}{formatCurrency(transaction.amount)}
-//                   </p>
-//                   <p className="text-sm text-gray-600 capitalize">{transaction.type}</p>
-//                 </div>
-//               </div>
-//             ))}
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-
-//   return (
-//     <div className="min-h-screen bg-gray-50">
-//       {/* Header */}
-//       <div className="bg-white border-b border-gray-200 px-6 py-4">
-//         <div className="max-w-7xl mx-auto">
-//           <div className="flex items-center justify-between">
-//             <div>
-//               <h1 className="text-2xl font-bold text-gray-900">Investment Dashboard</h1>
-//               <p className="text-gray-600">Grow your spare change with smart investments</p>
-//             </div>
-//             <button 
-//               onClick={handleRefresh}
-//               className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
-//               disabled={refreshing}
-//             >
-//               <RefreshCw size={16} className={refreshing ? 'animate-spin' : ''} />
-//               {refreshing ? 'Updating...' : 'Refresh'}
-//             </button>
-//           </div>
-//         </div>
-//       </div>
-
-//       {/* Main Content */}
-//       <div className="max-w-7xl mx-auto px-6 py-8">
-//         {/* Quick Stats Banner */}
-//         <div className="bg-gradient-to-r from-green-400 to-blue-500 text-white p-6 rounded-xl mb-8">
-//           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-//             <div className="text-center">
-//               <p className="text-green-100">This Month's Spare Change</p>
-//               <p className="text-2xl font-bold">{formatCurrency(2340)}</p>
-//             </div>
-//             <div className="text-center">
-//               <p className="text-blue-100">Auto-Invested</p>
-//               <p className="text-2xl font-bold">{formatCurrency(936)}</p>
-//             </div>
-//             <div className="text-center">
-//               <p className="text-purple-100">Portfolio Growth</p>
-//               <p className="text-2xl font-bold">+{portfolio.returnPercentage}%</p>
-//             </div>
-//           </div>
-//         </div>
-
-//         {/* Tab Navigation */}
-//         <div className="bg-white rounded-xl border border-gray-200 mb-8">
-//           <div className="border-b border-gray-200">
-//             <nav className="flex space-x-8 px-6">
-//               {[
-//                 { id: 'overview', label: 'Portfolio Overview', icon: PieChart },
-//                 { id: 'recommendations', label: 'Smart Recommendations', icon: Target },
-//                 { id: 'transactions', label: 'Transaction History', icon: BarChart3 }
-//               ].map((tab) => (
-//                 <button
-//                   key={tab.id}
-//                   onClick={() => setActiveTab(tab.id)}
-//                   className={`py-4 px-2 border-b-2 font-medium text-sm flex items-center gap-2 ${
-//                     activeTab === tab.id
-//                       ? 'border-blue-500 text-blue-600'
-//                       : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-//                   }`}
-//                 >
-//                   <tab.icon size={16} />
-//                   {tab.label}
-//                 </button>
-//               ))}
-//             </nav>
-//           </div>
-          
-//           <div className="p-6">
-//             {activeTab === 'overview' && <OverviewTab />}
-//             {activeTab === 'recommendations' && <RecommendationsTab />}
-//             {activeTab === 'transactions' && <TransactionsTab />}
-//           </div>
-//         </div>
-
-//         {/* Risk Disclaimer */}
-//         <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
-//           <div className="flex items-start gap-3">
-//             <AlertCircle size={20} className="text-amber-600 mt-0.5" />
-//             <div>
-//               <h4 className="font-medium text-amber-800">Investment Risk Disclosure</h4>
-//               <p className="text-sm text-amber-700 mt-1">
-//                 Mutual funds and market investments are subject to market risks. Past performance 
-//                 does not guarantee future returns. Please read all scheme related documents carefully 
-//                 before investing. SpareChange is not responsible for investment decisions or losses.
-//               </p>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Investment;
-
-
-
-
 
 import React, { useState, useEffect } from 'react';
 import { TrendingUp, TrendingDown, DollarSign, PieChart, BarChart3, Target, AlertCircle, CheckCircle, Clock, ArrowRight, Plus, Minus, RefreshCw, Eye, EyeOff, Info } from 'lucide-react';
@@ -1637,93 +1177,98 @@ const Investment = () => {
         }
       `}</style>
 
-      {/* Header */}
-      <div className="investment-header">
-        <div className="investment-header-content">
-          <div>
-            <h1 className="text-2xl font-bold text-gray-900">Investment Dashboard</h1>
-            <p className="text-gray-600">Grow your spare change with smart investments</p>
-          </div>
-          <button 
-            onClick={handleRefresh}
-            className="refresh-button"
-            disabled={refreshing}
-          >
-            <RefreshCw size={16} className={refreshing ? 'animate-spin' : ''} />
-            {refreshing ? 'Updating...' : 'Refresh'}
-          </button>
-        </div>
-      </div>
 
-      {/* Main Content */}
-      <div className="investment-main-content">
-        {/* Quick Stats Banner */}
-        <div className="quick-stats-banner">
-          <div className="quick-stats-grid">
-            <div className="text-center">
-              <p className="text-green-100">This Month's Spare Change</p>
-              <p className="text-2xl font-bold">{formatCurrency(2340)}</p>
-            </div>
-            <div className="text-center">
-              <p className="text-blue-100">Auto-Invested</p>
-              <p className="text-2xl font-bold">{formatCurrency(936)}</p>
-            </div>
-            <div className="text-center">
-              <p className="text-purple-100">Portfolio Growth</p>
-              <p className="text-2xl font-bold">+{portfolio.returnPercentage}%</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Tab Navigation */}
-        <div className="tab-navigation-container">
-          <div className="tab-navigation-header">
-            <nav className="flex space-x-8 px-6">
-              {[
-                { id: 'overview', label: 'Portfolio Overview', icon: PieChart },
-                { id: 'recommendations', label: 'Smart Recommendations', icon: Target },
-                { id: 'transactions', label: 'Transaction History', icon: BarChart3 }
-              ].map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`tab-button ${
-                    activeTab === tab.id
-                      ? 'active'
-                      : ''
-                  }`}
-                >
-                  <tab.icon size={16} />
-                  {tab.label}
-                </button>
-              ))}
-            </nav>
-          </div>
-          
-          <div className="p-6">
-            {activeTab === 'overview' && <OverviewTab />}
-            {activeTab === 'recommendations' && <RecommendationsTab />}
-            {activeTab === 'transactions' && <TransactionsTab />}
-          </div>
-        </div>
-
-        {/* Risk Disclaimer */}
-        <div className="risk-disclaimer">
-          <div className="risk-disclaimer-content">
-            <AlertCircle size={20} className="text-amber-600 mt-0.5" />
+      {/* Wrapping the entire component in a single parent div */}
+      <>
+        {/* Header */}
+        <div className="investment-header">
+          <div className="investment-header-content">
             <div>
-              <h4 className="font-medium text-amber-800">Investment Risk Disclosure</h4>
-              <p className="text-sm text-amber-700 mt-1">
-                Mutual funds and market investments are subject to market risks. Past performance 
-                does not guarantee future returns. Please read all scheme related documents carefully 
-                before investing. SpareChange is not responsible for investment decisions or losses.
-              </p>
+              <h1 className="text-2xl font-bold text-gray-900">Investment Dashboard</h1>
+              <p className="text-gray-600">Grow your spare change with smart investments</p>
+            </div>
+            <button 
+              onClick={handleRefresh}
+              className="refresh-button"
+              disabled={refreshing}
+            >
+              <RefreshCw size={16} className={refreshing ? 'animate-spin' : ''} />
+              {refreshing ? 'Updating...' : 'Refresh'}
+            </button>
+          </div>
+        </div>
+
+        {/* Main Content */}
+        <div className="investment-main-content">
+          {/* Quick Stats Banner */}
+          <div className="quick-stats-banner">
+            <div className="quick-stats-grid">
+              <div className="text-center">
+                <p className="text-green-100">This Month's Spare Change</p>
+                <p className="text-2xl font-bold">{formatCurrency(2340)}</p>
+              </div>
+              <div className="text-center">
+                <p className="text-blue-100">Auto-Invested</p>
+                <p className="text-2xl font-bold">{formatCurrency(936)}</p>
+              </div>
+              <div className="text-center">
+                <p className="text-purple-100">Portfolio Growth</p>
+                <p className="text-2xl font-bold">+{portfolio.returnPercentage}%</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Tab Navigation */}
+          <div className="tab-navigation-container">
+            <div className="tab-navigation-header">
+              <nav className="flex space-x-8 px-6">
+                {[
+                  { id: 'overview', label: 'Portfolio Overview', icon: PieChart },
+                  { id: 'recommendations', label: 'Smart Recommendations', icon: Target },
+                  { id: 'transactions', label: 'Transaction History', icon: BarChart3 }
+                ].map((tab) => (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`tab-button ${
+                      activeTab === tab.id
+                        ? 'active'
+                        : ''
+                    }`}
+                  >
+                    <tab.icon size={16} />
+                    {tab.label}
+                  </button>
+                ))}
+              </nav>
+            </div>
+            
+            <div className="p-6">
+              {activeTab === 'overview' && <OverviewTab />}
+              {activeTab === 'recommendations' && <RecommendationsTab />}
+              {activeTab === 'transactions' && <TransactionsTab />}
+            </div>
+          </div>
+
+          {/* Risk Disclaimer */}
+          <div className="risk-disclaimer">
+            <div className="risk-disclaimer-content">
+              <AlertCircle size={20} className="text-amber-600 mt-0.5" />
+              <div>
+                <h4 className="font-medium text-amber-800">Investment Risk Disclosure</h4>
+                <p className="text-sm text-amber-700 mt-1">
+                  Mutual funds and market investments are subject to market risks. Past performance 
+                  does not guarantee future returns. Please read all scheme related documents carefully 
+                  before investing. SpareChange is not responsible for investment decisions or losses.
+                </p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </>
     </div>
   );
 };
 
 export default Investment;
+
