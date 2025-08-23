@@ -58,6 +58,7 @@ const LoginPage = () => {
       setIsLoading(false);
       // Handle successful login - redirect to dashboard
       console.log('Login successful:', formData);
+      navigate('/Invest');
       alert('Login successful! Redirecting to dashboard...');
     }, 2000);
   };
