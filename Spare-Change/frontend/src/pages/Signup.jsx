@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { DollarSign, Eye, EyeOff, Mail, Lock, User, ArrowLeft } from 'lucide-react';
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const SignupPage = () => {
   const navigate = useNavigate();
+  const { login } = useAuth();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -70,7 +72,7 @@ const SignupPage = () => {
     // Simulate API call
     setTimeout(() => {
       setIsLoading(false);
-      navigate('/');
+      login(formData.email); 
       alert('Signup successful! Redirecting to HomePage...');
     }, 2000);
   };

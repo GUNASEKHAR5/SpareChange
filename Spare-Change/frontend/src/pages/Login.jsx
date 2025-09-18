@@ -477,9 +477,11 @@
 import React, { useState } from 'react';
 import { DollarSign, Eye, EyeOff, Mail, Lock, ArrowLeft } from 'lucide-react';
 import { Link,useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const LoginPage = () => {
   const navigate = useNavigate();
+  const { login } = useAuth();
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -538,7 +540,7 @@ const LoginPage = () => {
 
       // Handle successful login - redirect to dashboard
       console.log('Login successful:', formData);
-      navigate('/Invest');
+      login(formData.email);
       alert('Login successful! Redirecting to dashboard...');
     }, 2000);
 
