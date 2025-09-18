@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { TrendingUp, TrendingDown, DollarSign, PieChart, BarChart3, Target, AlertCircle, CheckCircle, Clock, ArrowRight, Plus, Minus, RefreshCw, Eye, EyeOff, Info } from 'lucide-react';
 
@@ -1175,6 +1176,7 @@ const Investment = () => {
         }
       `}</style>
 
+
       {/* Wrapping the entire component in a single parent div */}
       <>
         {/* Header */}
@@ -1268,3 +1270,4 @@ const Investment = () => {
 };
 
 export default Investment;
+
