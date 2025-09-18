@@ -2,8 +2,8 @@ import React from "react";
 import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import Home from "./pages/Home";
 import LoginPage from "./pages/Login";
-import SignupPage from "./pages/Signup";
 import Investment from "./pages/Invest";
+import SignupPage from "./pages/Signup";
 import PrivateRoute from "./components/PrivateRoute";
 import { AuthProvider } from "./context/AuthContext";
 
