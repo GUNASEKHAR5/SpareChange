@@ -1,3 +1,67 @@
+// import React from "react";
+// import { Link } from "react-router-dom";
+
+// export default function Home() {
+//   return (
+//     <div className="min-h-screen bg-gray-50 flex flex-col">
+//       {/* Navbar */}
+//       <header className="w-full shadow-md bg-white fixed top-0 z-50">
+//         <nav className="container mx-auto flex justify-between items-center py-4 px-6">
+//           <h1 className="text-2xl font-bold text-blue-600">SpareChange</h1>
+//           <ul className="flex gap-6">
+//             <li><Link to="/" className="text-gray-700 hover:text-blue-600 font-medium">Home</Link></li>
+//             <li><Link to="/wallet" className="text-gray-700 hover:text-blue-600 font-medium">Wallet</Link></li>
+//             <li><Link to="/donate" className="text-gray-700 hover:text-blue-600 font-medium">Donate</Link></li>
+//             <li><Link to="/invest" className="text-gray-700 hover:text-blue-600 font-medium">Invest</Link></li>
+//           </ul>
+//         </nav>
+//       </header>
+
+//       {/* Hero */}
+//       <section className="flex-1 flex flex-col justify-center items-center text-center px-6 pt-24">
+//         <h2 className="text-4xl md:text-5xl font-extrabold text-gray-800 mb-4">
+//           Turn Your Spare Change Into <span className="text-blue-600">Impact</span>
+//         </h2>
+//         <p className="text-lg text-gray-600 max-w-2xl mb-6">
+//           SpareChange helps you round up your daily transactions and use the extra money
+//           for donations, social causes, or micro-investments. Small steps. Big impact.
+//         </p>
+//         <div className="flex gap-4">
+//           <Link to="/get-started" className="bg-blue-600 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-700 transition">
+//             Get Started
+//           </Link>
+//           <Link to="/learn-more" className="border border-blue-600 text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-50 transition">
+//             Learn More
+//           </Link>
+//         </div>
+//       </section>
+
+//       {/* Features */}
+//       <section className="bg-white py-16">
+//         <div className="container mx-auto grid md:grid-cols-3 gap-8 px-6">
+//           <div className="p-6 shadow-md rounded-2xl bg-gray-50 hover:shadow-lg transition">
+//             <h3 className="text-xl font-semibold mb-3 text-blue-600">Round-Up Wallet</h3>
+//             <p className="text-gray-600">Purchases are rounded up; the difference goes into your pooled wallet.</p>
+//           </div>
+//           <div className="p-6 shadow-md rounded-2xl bg-gray-50 hover:shadow-lg transition">
+//             <h3 className="text-xl font-semibold mb-3 text-blue-600">Donate</h3>
+//             <p className="text-gray-600">Support causes from your wallet in one click.</p>
+//           </div>
+//           <div className="p-6 shadow-md rounded-2xl bg-gray-50 hover:shadow-lg transition">
+//             <h3 className="text-xl font-semibold mb-3 text-blue-600">Invest</h3>
+//             <p className="text-gray-600">Grow savings via curated micro-investments.</p>
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* Footer */}
+//       <footer className="bg-gray-800 text-white py-6 text-center">
+//         <p>&copy; {new Date().getFullYear()} SpareChange. All rights reserved.</p>
+//       </footer>
+//     </div>
+//   );
+// }
+
 import React, { useState } from 'react';
 import { DollarSign, Heart, TrendingUp, PiggyBank, Menu, X, ArrowRight, Shield, Users, BarChart3, Target, Zap, Globe } from 'lucide-react';
 import { Link } from "react-router-dom";
@@ -58,7 +122,7 @@ const SpareChangeHomepage = () => {
           gap: 0.5rem;
           font-size: 1.5rem;
           font-weight: 700;
-          color: var(--primary); /* Using CSS variable */
+          color: #2563eb;
           text-decoration: none;
         }
 
@@ -74,15 +138,14 @@ const SpareChangeHomepage = () => {
           color: #64748b;
           font-weight: 500;
           cursor: pointer;
-          transition: color 0.2s ease-in-out;
         }
 
         .nav-links a:hover {
-          color: var(--primary); /* Using CSS variable */
+          color: #2563eb;
         }
 
         .cta-button {
-          background: var(--primary); /* Using CSS variable */
+          background: #2563eb;
           color: white;
           padding: 0.75rem 1.5rem;
           border: none;
@@ -91,11 +154,10 @@ const SpareChangeHomepage = () => {
           cursor: pointer;
           text-decoration: none;
           display: inline-block;
-          transition: background 0.2s ease-in-out;
         }
 
         .cta-button:hover {
-          background: var(--primary-dark); /* Using CSS variable */
+          background: #1d4ed8;
         }
 
         .mobile-menu-btn {
@@ -115,7 +177,6 @@ const SpareChangeHomepage = () => {
           background: white;
           border-bottom: 1px solid #e0e0e0;
           padding: 1rem 2rem;
-          box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* Added shadow for mobile menu */
         }
 
         .mobile-menu.open {
@@ -128,17 +189,6 @@ const SpareChangeHomepage = () => {
           gap: 1rem;
           list-style: none;
         }
-        .mobile-nav-links a {
-            color: #64748b;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.5rem 0;
-            display: block;
-        }
-        .mobile-nav-links a:hover {
-            color: var(--primary);
-        }
-
 
         /* Hero Section */
         .hero {
@@ -189,7 +239,7 @@ const SpareChangeHomepage = () => {
           border-top: 1px solid rgba(255, 255, 255, 0.3);
           padding-top: 1rem;
           font-weight: 600;
-          color: #fbbf24; /* Amber color */
+          color: #fbbf24;
         }
 
         .hero-buttons {
@@ -202,7 +252,7 @@ const SpareChangeHomepage = () => {
 
         .btn-primary {
           background: white;
-          color: var(--primary); /* Using CSS variable */
+          color: #2563eb;
           padding: 1rem 2rem;
           border: none;
           border-radius: 8px;
@@ -211,7 +261,6 @@ const SpareChangeHomepage = () => {
           cursor: pointer;
           text-decoration: none;
           display: inline-block;
-          transition: background 0.2s ease-in-out;
         }
 
         .btn-primary:hover {
@@ -229,12 +278,11 @@ const SpareChangeHomepage = () => {
           cursor: pointer;
           text-decoration: none;
           display: inline-block;
-          transition: background 0.2s ease-in-out, color 0.2s ease-in-out;
         }
 
         .btn-secondary:hover {
           background: white;
-          color: var(--primary); /* Using CSS variable */
+          color: #2563eb;
         }
 
         /* Three Pillars Section */
@@ -279,23 +327,18 @@ const SpareChangeHomepage = () => {
           text-align: center;
           border: 2px solid #e2e8f0;
           position: relative;
-          transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Added transition */
-        }
-        .pillar-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
         }
 
         .pillar-card.donate {
-          border-color: #ef4444; /* Red */
+          border-color: #ef4444;
         }
 
         .pillar-card.invest {
-          border-color: #10b981; /* Green */
+          border-color: #10b981;
         }
 
         .pillar-card.save {
-          border-color: #f59e0b; /* Amber */
+          border-color: #f59e0b;
         }
 
         .pillar-icon {
@@ -349,7 +392,7 @@ const SpareChangeHomepage = () => {
 
         .pillar-features li::before {
           content: '✓';
-          color: #10b981; /* Green checkmark */
+          color: #10b981;
           font-weight: 600;
         }
 
@@ -373,15 +416,10 @@ const SpareChangeHomepage = () => {
           text-align: center;
           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
           position: relative;
-          transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Added transition */
-        }
-        .process-step:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
         }
 
         .step-number {
-          background: var(--primary); /* Using CSS variable */
+          background: #2563eb;
           color: white;
           width: 50px;
           height: 50px;
@@ -408,7 +446,6 @@ const SpareChangeHomepage = () => {
           margin: 1rem 0;
           font-family: 'Monaco', monospace;
           font-size: 0.9rem;
-          text-align: left; /* Ensure text alignment for code blocks */
         }
 
         /* Features Section */
@@ -428,13 +465,7 @@ const SpareChangeHomepage = () => {
           background: #f8fafc;
           padding: 2rem;
           border-radius: 12px;
-          border-left: 4px solid var(--primary); /* Using CSS variable */
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* Added shadow */
-          transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Added transition */
-        }
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+          border-left: 4px solid #2563eb;
         }
 
         .feature-card h3 {
@@ -446,15 +477,12 @@ const SpareChangeHomepage = () => {
           align-items: center;
           gap: 0.5rem;
         }
-        .feature-card h3 svg { /* Style for icons within h3 */
-            color: var(--primary);
-        }
 
         .feature-card p {
           color: #64748b;
         }
 
-        /* Stats Section - Re-added for completeness, though commented out in JSX */
+        /* Stats Section */
         .stats {
           background: #1e293b;
           color: white;
@@ -473,7 +501,7 @@ const SpareChangeHomepage = () => {
           font-size: 3rem;
           font-weight: 800;
           margin-bottom: 0.5rem;
-          color: #60a5fa; /* Light blue */
+          color: #60a5fa;
         }
 
         .stat-item p {
@@ -499,11 +527,6 @@ const SpareChangeHomepage = () => {
           padding: 2rem;
           border-radius: 12px;
           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-          transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Added transition */
-        }
-        .use-case-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
         }
 
         .use-case-card h4 {
@@ -518,19 +541,12 @@ const SpareChangeHomepage = () => {
           padding: 1rem;
           border-radius: 8px;
           margin: 1rem 0;
-          border-left: 3px solid var(--primary); /* Using CSS variable */
-          font-size: 0.9rem;
-          color: #475569; /* Darker gray for text */
-          text-align: left; /* Ensure text alignment for code blocks */
+          border-left: 3px solid #2563eb;
         }
-        .use-case-scenario strong {
-            color: var(--dark); /* Make strong text stand out */
-        }
-
 
         /* CTA Section */
         .cta-section {
-          background: linear-gradient(135deg, #2563eb, #1d4ed8); /* Blue gradient */
+          background: linear-gradient(135deg, #2563eb, #1d4ed8);
           color: white;
           padding: 80px 2rem;
           text-align: center;
@@ -562,13 +578,10 @@ const SpareChangeHomepage = () => {
           gap: 0.5rem;
           font-weight: 500;
         }
-        .cta-feature svg { /* Style for icons in CTA features */
-            color: white;
-        }
 
         /* Footer */
         .footer {
-          background: #1e293b; /* Dark gray */
+          background: #1e293b;
           color: white;
           padding: 60px 2rem 30px;
         }
@@ -585,7 +598,7 @@ const SpareChangeHomepage = () => {
           font-size: 1.2rem;
           font-weight: 600;
           margin-bottom: 1rem;
-          color: #60a5fa; /* Light blue */
+          color: #60a5fa;
         }
 
         .footer-section ul {
@@ -597,9 +610,8 @@ const SpareChangeHomepage = () => {
         }
 
         .footer-section ul li a {
-          color: #cbd5e1; /* Light gray */
+          color: #cbd5e1;
           text-decoration: none;
-          transition: color 0.2s ease-in-out;
         }
 
         .footer-section ul li a:hover {
@@ -609,14 +621,10 @@ const SpareChangeHomepage = () => {
         .footer-bottom {
           margin-top: 3rem;
           padding-top: 2rem;
-          border-top: 1px solid #374151; /* Darker gray border */
+          border-top: 1px solid #374151;
           text-align: center;
-          color: #9ca3af; /* Lighter gray */
+          color: #9ca3af;
         }
-        .footer-bottom p {
-            font-size: 0.9rem;
-        }
-
 
         /* Responsive Design */
         @media (max-width: 768px) {
@@ -706,6 +714,7 @@ const SpareChangeHomepage = () => {
             <DollarSign size={24}/>SpareChange
           </Link>
 
+          
           <ul className="nav-links">
             <li><a onClick={() => scrollToSection('how-it-works')}>How It Works</a></li>
             <li><a onClick={() => scrollToSection('features')}>Features</a></li>
@@ -745,13 +754,11 @@ const SpareChangeHomepage = () => {
 
           <div className={`mobile-menu ${isMenuOpen ? 'open' : ''}`}>
             <ul className="mobile-nav-links">
-                <li><a onClick={() => scrollToSection('how-it-works')}>How It Works</a></li>
-                <li><a onClick={() => scrollToSection('features')}>Features</a></li>
-                <li><a onClick={() => scrollToSection('use-cases')}>Use Cases</a></li>
-                {/* Corrected Link paths to lowercase in mobile menu */}
-                <li><Link to="/invest" style={{ textDecoration: 'none', color: '#64748b', fontWeight: '500' }}>Invest</Link></li>
-                <li><Link to="/Login">Login</Link></li>
-                <li><Link to="/Signup" className="cta-button">Sign Up</Link></li>
+              <li><a onClick={() => scrollToSection('how-it-works')}>How It Works</a></li>
+              <li><a onClick={() => scrollToSection('features')}>Features</a></li>
+              <li><a onClick={() => scrollToSection('use-cases')}>Use Cases</a></li>
+              <li><a href="/login">Login</a></li>
+              <li><a href="/signup">Sign Up</a></li>
             </ul>
           </div>
         </nav>
@@ -785,7 +792,7 @@ const SpareChangeHomepage = () => {
               Start Saving Today
             </a>
             <a onClick={() => scrollToSection('how-it-works')} className="btn-secondary">
-                Learn More
+              Learn More
             </a>
           </div>
         </div>
@@ -817,6 +824,24 @@ const SpareChangeHomepage = () => {
                 <li>Real-time impact reports</li>
               </ul>
             </div>
+
+            {/* <div className="pillar-card invest">
+              <div className="pillar-icon">
+                <TrendingUp size={32} />
+              </div>
+              <h3>Micro-Investment</h3>
+              <p>
+                Invest your spare change in diversified portfolios, mutual funds, 
+                and ETFs. Build wealth gradually with minimal risk.
+              </p>
+              <ul className="pillar-features">
+                <li>Low-risk mutual funds and ETFs</li>
+                <li>Robo-advisor portfolio suggestions</li>
+                <li>Risk assessment and management</li>
+                <li>Real-time returns tracking</li>
+              </ul>
+            </div> */}
+
             <div className="pillar-card invest">
                 <div className="pillar-icon">
                     <TrendingUp size={32} />
@@ -1015,7 +1040,6 @@ const SpareChangeHomepage = () => {
             </div>
           </div>
         </div>
-
       </section> */}
 
       {/* Use Cases Section */}
@@ -1094,7 +1118,7 @@ const SpareChangeHomepage = () => {
               </div>
             </div>
 
-            <Link to="/signup" className="btn-primary">Create Free Account</Link>
+            <a href="/signup" className="btn-primary">Create Free Account</a>
           </div>
         </div>
       </section>
@@ -1107,43 +1131,43 @@ const SpareChangeHomepage = () => {
               <h4>SpareChange</h4>
               <p>Transforming spare change into meaningful impact through donations, investments, and smart savings.</p>
               <div style={{ marginTop: '1rem' }}>
-                <Link to="/" className="logo" style={{ color: '#60a5fa', fontSize: '1.2rem' }}>
+                <a href="/" className="logo" style={{ color: '#60a5fa', fontSize: '1.2rem' }}>
                   <DollarSign size={20} />
                   SpareChange
-                </Link>
+                </a>
               </div>
             </div>
             
             <div className="footer-section">
               <h4>Product</h4>
               <ul>
-                <li><Link to="/features">Features</Link></li>
-                <li><Link to="/security">Security</Link></li>
-                <li><Link to="/integrations">Bank Integrations</Link></li>
-                <li><Link to="/api">API Documentation</Link></li>
-                <li><Link to="/pricing">Pricing</Link></li>
+                <li><a href="/features">Features</a></li>
+                <li><a href="/security">Security</a></li>
+                <li><a href="/integrations">Bank Integrations</a></li>
+                <li><a href="/api">API Documentation</a></li>
+                <li><a href="/pricing">Pricing</a></li>
               </ul>
             </div>
             
             <div className="footer-section">
               <h4>Impact</h4>
               <ul>
-                <li><Link to="/charities">Partner NGOs</Link></li>
-                <li><Link to="/investments">Investment Options</Link></li>
-                <li><Link to="/impact-reports">Impact Reports</Link></li>
-                <li><Link to="/success-stories">Success Stories</Link></li>
-                <li><Link to="/transparency">Transparency</Link></li>
+                <li><a href="/charities">Partner NGOs</a></li>
+                <li><a href="/investments">Investment Options</a></li>
+                <li><a href="/impact-reports">Impact Reports</a></li>
+                <li><a href="/success-stories">Success Stories</a></li>
+                <li><a href="/transparency">Transparency</a></li>
               </ul>
             </div>
             
             <div className="footer-section">
               <h4>Support</h4>
               <ul>
-                <li><Link to="/help">Help Center</Link></li>
-                <li><Link to="/contact">Contact Us</Link></li>
-                <li><Link to="/privacy">Privacy Policy</Link></li>
-                <li><Link to="/terms">Terms of Service</Link></li>
-                <li><Link to="/regulatory">Regulatory Info</Link></li>
+                <li><a href="/help">Help Center</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+                <li><a href="/privacy">Privacy Policy</a></li>
+                <li><a href="/terms">Terms of Service</a></li>
+                <li><a href="/regulatory">Regulatory Info</a></li>
               </ul>
             </div>
           </div>

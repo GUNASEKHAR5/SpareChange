@@ -14,15 +14,13 @@ const LoginPage = () => {
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
- // const navigate = useNavigate();  Initialize useNavigate hook
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
       [name]: value
     }));
-
+    // Clear error when user starts typing
     if (errors[name]) {
       setErrors(prev => ({
         ...prev,
@@ -37,13 +35,13 @@ const LoginPage = () => {
     if (!formData.email) {
       newErrors.email = 'Email is required';
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email address'; // More descriptive error
+      newErrors.email = 'Please enter a valid email';
     }
     
     if (!formData.password) {
       newErrors.password = 'Password is required';
     } else if (formData.password.length < 6) {
-      newErrors.password = 'Password must be at least 6 characters long'; // More descriptive error
+      newErrors.password = 'Password must be at least 6 characters';
     }
     
     setErrors(newErrors);
@@ -51,23 +49,20 @@ const LoginPage = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // Prevent default form submission behavior
+    e.preventDefault();
     
-    if (!validateForm()) return; // Stop if validation fails
+    if (!validateForm()) return;
     
     setIsLoading(true);
     
-    // Simulate API call for login
+    // Simulate API call
     setTimeout(() => {
       setIsLoading(false);
-
       // Handle successful login - redirect to dashboard
       console.log('Login successful:', formData);
       login(formData.email);
       alert('Login successful! Redirecting to dashboard...');
     }, 2000);
-
-
   };
 
   return (
@@ -87,7 +82,7 @@ const LoginPage = () => {
 
         .login-page {
           min-height: 100vh;
-          background: var(--gradient); /* Using CSS variable for consistency */
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -116,11 +111,10 @@ const LoginPage = () => {
           align-items: center;
           gap: 0.5rem;
           font-size: 0.9rem;
-          transition: color 0.2s ease-in-out;
         }
 
         .back-button:hover {
-          color: var(--primary); /* Using CSS variable */
+          color: #2563eb;
         }
 
         .login-header {
@@ -134,7 +128,7 @@ const LoginPage = () => {
           gap: 0.5rem;
           font-size: 1.8rem;
           font-weight: 700;
-          color: var(--primary); /* Using CSS variable */
+          color: #2563eb;
           justify-content: center;
           margin-bottom: 1rem;
         }
@@ -142,7 +136,7 @@ const LoginPage = () => {
         .login-title {
           font-size: 2rem;
           font-weight: 700;
-          color: var(--dark); /* Using CSS variable */
+          color: #1e293b;
           margin-bottom: 0.5rem;
         }
 
@@ -181,17 +175,16 @@ const LoginPage = () => {
           border-radius: 8px;
           font-size: 1rem;
           background: #f8fafc;
-          transition: all 0.2s ease-in-out;
         }
 
         .form-input:focus {
           outline: none;
-          border-color: var(--primary); /* Using CSS variable */
+          border-color: #2563eb;
           background: white;
         }
 
         .form-input.error {
-          border-color: var(--danger); /* Using CSS variable */
+          border-color: #ef4444;
           background: #fef2f2;
         }
 
@@ -212,15 +205,14 @@ const LoginPage = () => {
           border: none;
           color: #9ca3af;
           cursor: pointer;
-          transition: color 0.2s ease-in-out;
         }
 
         .password-toggle:hover {
-          color: var(--primary); /* Using CSS variable */
+          color: #2563eb;
         }
 
         .error-message {
-          color: var(--danger); /* Using CSS variable */
+          color: #ef4444;
           font-size: 0.875rem;
           margin-top: 0.25rem;
         }
@@ -231,10 +223,9 @@ const LoginPage = () => {
         }
 
         .forgot-password a {
-          color: var(--primary); /* Using CSS variable */
+          color: #2563eb;
           text-decoration: none;
           font-size: 0.9rem;
-          transition: text-decoration 0.2s ease-in-out;
         }
 
         .forgot-password a:hover {
@@ -242,7 +233,7 @@ const LoginPage = () => {
         }
 
         .login-button {
-          background: var(--primary); /* Using CSS variable */
+          background: #2563eb;
           color: white;
           padding: 1rem;
           border: none;
@@ -251,20 +242,15 @@ const LoginPage = () => {
           font-size: 1.1rem;
           cursor: pointer;
           margin-top: 1rem;
-          transition: background 0.2s ease-in-out;
-          display: flex; /* For spinner alignment */
-          align-items: center;
-          justify-content: center;
         }
 
         .login-button:hover:not(:disabled) {
-          background: var(--primary-dark); /* Using CSS variable */
+          background: #1d4ed8;
         }
 
         .login-button:disabled {
           background: #9ca3af;
           cursor: not-allowed;
-          opacity: 0.8;
         }
 
         .divider {
@@ -306,17 +292,11 @@ const LoginPage = () => {
           font-weight: 500;
           cursor: pointer;
           text-decoration: none;
-          transition: all 0.2s ease-in-out;
         }
 
         .social-button:hover {
-          border-color: var(--primary); /* Using CSS variable */
-          color: var(--primary); /* Using CSS variable */
-        }
-
-        .social-button img {
-            width: 18px; /* Ensure consistent icon size */
-            height: 18px;
+          border-color: #2563eb;
+          color: #2563eb;
         }
 
         .signup-link {
@@ -328,10 +308,9 @@ const LoginPage = () => {
         }
 
         .signup-link a {
-          color: var(--primary); /* Using CSS variable */
+          color: #2563eb;
           text-decoration: none;
           font-weight: 600;
-          transition: text-decoration 0.2s ease-in-out;
         }
 
         .signup-link a:hover {
@@ -339,26 +318,23 @@ const LoginPage = () => {
         }
 
         .security-note {
-          background: #f0f9ff; /* bg-blue-50 */
-          border: 1px solid #bae6fd; /* border-blue-200 */
+          background: #f0f9ff;
+          border: 1px solid #bae6fd;
           border-radius: 8px;
           padding: 1rem;
           margin-top: 1.5rem;
           font-size: 0.9rem;
-          color: #0369a1; /* text-sky-800 */
+          color: #0369a1;
           display: flex;
           align-items: center;
           gap: 0.5rem;
-        }
-        .security-note svg {
-            color: #38bdf8; /* text-sky-500 */
         }
 
         /* Loading spinner */
         .spinner {
           width: 20px;
           height: 20px;
-          border: 2px solid rgba(255, 255, 255, 0.4); /* Lighter border for spinner */
+          border: 2px solid #ffffff40;
           border-top: 2px solid #ffffff;
           border-radius: 50%;
           animation: spin 1s linear infinite;
@@ -408,44 +384,39 @@ const LoginPage = () => {
           </p>
         </div>
 
-        <form className="login-form" onSubmit={handleSubmit}> {/* Changed to form and added onSubmit */}
+        <div className="login-form">
           <div className="form-group">
-            <label className="form-label" htmlFor="email">Email Address</label> {/* Added htmlFor */}
+            <label className="form-label">Email Address</label>
             <div className="input-container">
               <Mail className="input-icon" size={18} />
               <input
                 type="email"
-                id="email" // Added id
                 name="email"
                 className={`form-input ${errors.email ? 'error' : ''}`}
                 placeholder="Enter your email"
                 value={formData.email}
                 onChange={handleInputChange}
-                disabled={isLoading} // Disable input when loading
               />
             </div>
             {errors.email && <div className="error-message">{errors.email}</div>}
           </div>
 
           <div className="form-group">
-            <label className="form-label" htmlFor="password">Password</label> {/* Added htmlFor */}
+            <label className="form-label">Password</label>
             <div className="input-container">
               <Lock className="input-icon" size={18} />
               <input
                 type={showPassword ? 'text' : 'password'}
-                id="password" // Added id
                 name="password"
                 className={`form-input ${errors.password ? 'error' : ''}`}
                 placeholder="Enter your password"
                 value={formData.password}
                 onChange={handleInputChange}
-                disabled={isLoading} // Disable input when loading
               />
               <button
                 type="button"
                 className="password-toggle"
                 onClick={() => setShowPassword(!showPassword)}
-                disabled={isLoading} // Disable toggle when loading
               >
                 {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
               </button>
@@ -454,18 +425,19 @@ const LoginPage = () => {
           </div>
 
           <div className="forgot-password">
-            <Link to="/forgot-password">Forgot your password?</Link> {/* Changed to Link */}
+            <a href="/forgot-password">Forgot your password?</a>
           </div>
 
           <button 
-            type="submit" // Changed to type="submit"
+            type="button" 
             className="login-button"
             disabled={isLoading}
+            onClick={handleSubmit}
           >
             {isLoading && <div className="spinner"></div>}
             {isLoading ? 'Signing In...' : 'Sign In'}
           </button>
-        </form>
+        </div>
 
         <div className="divider">
           <span>or continue with</span>
@@ -491,7 +463,7 @@ const LoginPage = () => {
         </div>
 
         <div className="security-note">
-          <Info size={16} /> {/* Changed Lock to Info for security note icon */}
+          <Lock size={16} />
           Your login is secured with bank-level encryption and multi-factor authentication
         </div>
 
