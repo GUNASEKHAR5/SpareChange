@@ -3,7 +3,7 @@ import { DollarSign, Eye, EyeOff, Mail, Lock, User, ArrowLeft } from 'lucide-rea
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-
+ 
 const SignupPage = () => {
   const navigate = useNavigate();
   const { login } = useAuth();

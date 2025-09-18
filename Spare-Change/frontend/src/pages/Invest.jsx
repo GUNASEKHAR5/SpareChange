@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { TrendingUp, TrendingDown, DollarSign, PieChart, BarChart3, Target, AlertCircle, CheckCircle, Clock, ArrowRight, Plus, Minus, RefreshCw, Eye, EyeOff, Info } from 'lucide-react';
 
 const Investment = () => {
-  // Mock user data - in real app, this would come from API/context
   const [user] = useState({
     name: "Priya Sharma",
     totalSpareChange: 8450,
