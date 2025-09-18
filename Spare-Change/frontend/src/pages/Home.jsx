@@ -65,9 +65,11 @@
 import React, { useState } from 'react';
 import { DollarSign, Heart, TrendingUp, PiggyBank, Menu, X, ArrowRight, Shield, Users, BarChart3, Target, Zap, Globe } from 'lucide-react';
 import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const SpareChangeHomepage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { user, logout } = useAuth();
 
   const scrollToSection = (sectionId) => {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
@@ -76,7 +78,7 @@ const SpareChangeHomepage = () => {
 
   return (
     <div className="homepage">
-      <style jsx>{`
+      <style>{`
         * {
           margin: 0;
           padding: 0;
@@ -717,8 +719,30 @@ const SpareChangeHomepage = () => {
             <li><a onClick={() => scrollToSection('how-it-works')}>How It Works</a></li>
             <li><a onClick={() => scrollToSection('features')}>Features</a></li>
             <li><a onClick={() => scrollToSection('use-cases')}>Use Cases</a></li>
-            <li><a href="/Login">Login</a></li>
-            <li><a href="/signup">Sign Up</a></li>
+            
+            {user ? (
+              <li className="relative group">
+                <span className="text-gray-700 font-medium cursor-pointer">
+                  {user.email.split("@")[0]}
+                </span>
+                <ul className="absolute hidden group-hover:block bg-white border mt-2 rounded shadow">
+                  <li>
+                    <Link
+                      to="/"
+                      onClick={logout}
+                      className="block px-4 py-2 text-sm hover:bg-gray-100"
+                    >
+                      Logout
+                    </Link>
+                  </li>
+                </ul>
+              </li>
+            ) : (
+              <>
+                <li><a href="/Login">Login</a></li>
+                <li><a href="/signup">Sign Up</a></li>
+              </>
+            )}
           </ul>
 
           <button 
@@ -764,7 +788,9 @@ const SpareChangeHomepage = () => {
           </div>
 
           <div className="hero-buttons">
-            <a href="/signup" className="btn-primary">Start Saving Today</a>
+            <a href={user ? "/invest" : "/login"} className="btn-primary">
+              Start Saving Today
+            </a>
             <a onClick={() => scrollToSection('how-it-works')} className="btn-secondary">
               Learn More
             </a>
